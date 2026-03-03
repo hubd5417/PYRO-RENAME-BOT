@@ -125,7 +125,7 @@ async def rename_callback(bot, query):
               caption=caption
              )
 
-       elif type == "video":
+        elif type == "video":
              await sts.reply_video(
                video=file_path,
                caption=caption,
@@ -133,7 +133,7 @@ async def rename_callback(bot, query):
                duration=duration
              )
 
-      elif type == "audio":
+       elif type == "audio":
             await sts.reply_audio(
               audio=file_path,
               caption=caption,
