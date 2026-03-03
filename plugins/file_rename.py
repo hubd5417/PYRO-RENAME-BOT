@@ -82,7 +82,7 @@ async def rename_callback(bot, query):
 
     sts = await query.message.edit("Tʀyɪɴɢ Tᴏ Dᴏᴡɴʟᴏᴀᴅɪɴɢ....")    
     try:
-     	path = await file.download(file_name=file_path, progress=progress_for_pyrogram,progress_args=("Dᴏᴡɴʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", sts, time.time()))                    
+     	path = await file.download(file_name=file_path)                    
     except Exception as e:
      	return await sts.edit(e)
     duration = 0
@@ -119,31 +119,27 @@ async def rename_callback(bot, query):
     type = query.data.split("_")[1]
     try:
         if type == "document":
-            await sts.reply_document(
-                document=file_path,
-                thumb=ph_path, 
-                caption=caption, 
-                progress=progress_for_pyrogram,
-                progress_args=("Uᴩʟᴏᴅ Sᴛᴀʀᴛᴇᴅ....", sts, time.time())
-            )
-        elif type == "video": 
-            await sts.reply_video(
-                video=file_path,
-                caption=caption,
-                thumb=ph_path,
-                duration=duration,
-                progress=progress_for_pyrogram,
-                progress_args=("Uᴩʟᴏᴅ Sᴛᴀʀᴛᴇᴅ....", sts, time.time())
-            )
-        elif type == "audio": 
-            await sts.reply_audio(
-                audio=file_path,
-                caption=caption,
-                thumb=ph_path,
-                duration=duration,
-                progress=progress_for_pyrogram,
-                progress_args=("Uᴩʟᴏᴅ Sᴛᴀʀᴛᴇᴅ....", sts, time.time())
-            )
+    await sts.reply_document(
+        document=file_path,
+        thumb=ph_path,
+        caption=caption
+    )
+
+elif type == "video":
+    await sts.reply_video(
+        video=file_path,
+        caption=caption,
+        thumb=ph_path,
+        duration=duration
+    )
+
+elif type == "audio":
+    await sts.reply_audio(
+        audio=file_path,
+        caption=caption,
+        thumb=ph_path,
+        duration=duration
+    )
     except Exception as e:          
         try: 
             os.remove(file_path)
