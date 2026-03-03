@@ -119,27 +119,27 @@ async def rename_callback(bot, query):
     type = query.data.split("_")[1]
     try:
         if type == "document":
-    await sts.reply_document(
-        document=file_path,
-        thumb=ph_path,
-        caption=caption
-    )
+            await sts.reply_document(
+              document=file_path,
+              thumb=ph_path,
+              caption=caption
+             )
 
-elif type == "video":
-    await sts.reply_video(
-        video=file_path,
-        caption=caption,
-        thumb=ph_path,
-        duration=duration
-    )
+       elif type == "video":
+             await sts.reply_video(
+               video=file_path,
+               caption=caption,
+               thumb=ph_path,
+               duration=duration
+             )
 
-elif type == "audio":
-    await sts.reply_audio(
-        audio=file_path,
-        caption=caption,
-        thumb=ph_path,
-        duration=duration
-    )
+      elif type == "audio":
+            await sts.reply_audio(
+              audio=file_path,
+              caption=caption,
+              thumb=ph_path,
+              duration=duration
+            )
     except Exception as e:          
         try: 
             os.remove(file_path)
